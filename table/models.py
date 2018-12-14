@@ -14,3 +14,23 @@ class timetables(models.Model):
     target_id = models.CharField(max_length=256,default="")
     quater = models.IntegerField()
     year = models.IntegerField()
+
+class Users(models.Model):
+    UserName = models.CharField(max_length=100)
+    Token = models.CharField(max_length=100)
+    Tag = models.CharField(max_length=100)
+    Mail = models.CharField(max_length=100)
+
+class Notifications(models.Model):
+    Target = models.CharField(max_length=100)
+    FireTime = models.IntegerField()
+    Status = models.IntegerField()
+    IsContact = models.BooleanField()
+
+class Devices(models.Model):
+    Device = models.IntegerField()
+    Token = models.CharField(max_length=100)
+
+class Teachers(models.Model):
+    Name = models.CharField(max_length=100)
+    Mail = models.CharField(max_length=100)
