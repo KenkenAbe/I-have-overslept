@@ -19,4 +19,5 @@ from . import views
 
 urlpatterns = [
     path(r'', views.table, name='table'),
+    path(r'setting/', views.setting, name='setting'),
 ]
