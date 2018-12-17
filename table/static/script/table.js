@@ -1,6 +1,4 @@
-var table=timetables.objects.all;
-
-//var g1=document.getElementById(g1); 
+//var g1=document.getElementById(g1);
 //g1.textContent=table; 
 //var k1=document.getElementById(k1); 
 //k1.textContent=table; 
