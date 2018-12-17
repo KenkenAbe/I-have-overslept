@@ -43,6 +43,8 @@ def g_callback(request):
 
     res = requests.post(url,urllib.parse.urlencode(params),headers=headers)
 
+
+
     print(res.text)
 
     if res.status_code == 200:
@@ -74,4 +76,25 @@ def g_callback(request):
     return redirect("/")
 
 
-    return render(request, 'timetable.html')
+
+def authorization(request):
+    if request.COOKIES.get('key') == None:
+        return False
+
+def createTimetable(request):
+    if request.GET["title"] == "" or request.GET["teacher"] == "" or request.GET["start_time"] == None or request.GET["end_time"] == None or request.GET["week"] == "" or request.GET["time"] == "":
+        return None
+
+    new_data = timetables()
+    new_data.title = request.GET["title"]
+    new_data.teacher = request.GET["teacher"]
+    new_data.start_time = 0
+
+def timeGet(time):
+    JST = timezone(timedelta(hours=+9), 'JST')
+    now_time = datetime.now(JST)
+    today_oclock_time = datetime(now_time.year,now_time.month,now_time.day,0,0,0,0)
+    distance_time = int(time.timestamp() - today_oclock_time.timestamp())
+    return distance_time
+
+timeGet(datetime(2018,12,17,16,15,00,00,tzinfo=timezone(timedelta(hours=+9), 'JST')))
