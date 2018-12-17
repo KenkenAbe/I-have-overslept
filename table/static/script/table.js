@@ -9,3 +9,8 @@
 //var i1=document.getElementById(i1); 
 //i1.textContent=table; 
 
+function rewriteFormModal(week,time){
+    let weeks = ["月","火","水","木","金"]
+    document.getElementById("form-week").innerText = weeks[week]+"曜日";
+    document.getElementById("form-time").innerText = String(time)+"時限";
+}
