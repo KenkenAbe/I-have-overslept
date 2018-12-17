@@ -70,10 +70,11 @@ def g_callback(request):
 
         response = redirect("/")
         token = base64.b64encode(bytes(user_info["name"], 'utf-8'))
-        print(token)
+
+        #ひとまず名前をbase64encodeしたものをcookieに入れてるけど、セキュリティ上危ないので変更されるべき
+
         response.set_cookie("key",token.decode("utf-8"))
 
-        print(user_info)
         return response
 
     return redirect("/")
@@ -85,13 +86,17 @@ def authorization(request):
         return False
 
 def createTimetable(request):
-    if request.GET["title"] == "" or request.GET["teacher"] == "" or request.GET["start_time"] == None or request.GET["end_time"] == None or request.GET["week"] == "" or request.GET["time"] == "":
-        return None
+    """if request.GET["title"] == "" or request.GET["teacher"] == "" or request.GET["start_time"] == None or request.GET["end_time"] == None or request.GET["week"] == "" or request.GET["time"] == "":
+        return None"""
 
-    new_data = timetables()
+    print(request.POST)
+
+    """new_data = timetables()
     new_data.title = request.GET["title"]
     new_data.teacher = request.GET["teacher"]
-    new_data.start_time = 0
+    new_data.start_time = 0"""
+
+    return redirect("/")
 
 def timeGet(time):
     JST = timezone(timedelta(hours=+9), 'JST')

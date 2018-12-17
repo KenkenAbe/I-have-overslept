@@ -98,11 +98,17 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <p id="form-week"></p>
-                    <p id="form-time"></p>
+
+                    <form action="/timetables/create" method="post">
+                        {% csrf_token %}
+                        科目名：<input type="text" name="title" autocomplete="off"><br>
+                        <p id="form-week"></p>
+                        <p id="form-time"></p><br>
+                        <input class="btn btn-primary" type="submit" value="作成">
+                        <input class="btn btn-secondary" data-dismiss="modal" type="cancel" value="キャンセル">
+                    </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                   </div>
                 </div>
