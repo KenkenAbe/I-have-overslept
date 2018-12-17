@@ -10,10 +10,13 @@ from datetime import datetime, timedelta, timezone
 # Create your views here.
 def table(request):
     """時間割画面"""
-    if request.COOKIES.get("key") == None:
-        return redirect("/login")
 
-    user_id = base64.b64decode(request.COOKIES.get("key") + '=' * (-len(request.COOKIES.get("key")) % 4)).decode("utf-8")
+    if request.COOKIES.get("key") == None:
+        user_id = ""
+    else:
+        user_id = base64.b64decode(request.COOKIES.get("key") + '=' * (-len(request.COOKIES.get("key")) % 4)).decode(
+            "utf-8")
+
     params = {"user_id":user_id}
     return render(request, 'timetable.html',params)
 
