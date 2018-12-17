@@ -25,7 +25,7 @@ SECRET_KEY = 'p%@tr%#d^a)&qiyc=*!yy%$q-vn+k7f(w&bc6fj%mlhvvz+l3a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["scheduler.iniadstulab.jp"]
 
 
 # Application definition
