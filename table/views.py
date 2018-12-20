@@ -20,8 +20,17 @@ def table(request):
     params = {"user_id":user_id}
     return render(request, 'timetable.html',params)
 
+def update(request):
+    if timetables.objects.all == None:
+        lesson = "未登録"
+    else:
+        lesson = timetables.objects.all()
+
+    params = {"lesson":lesson}
+    return render(request, 'timetable.html',params)        
+
 def setting(request):
-    """時間割画面"""
+    """設定画面"""
     return render(request, 'setting.html')
 
 def login(request):
