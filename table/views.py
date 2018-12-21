@@ -18,9 +18,9 @@ def table(request):
             "utf-8")
         if timetables.objects.all() != None:
             lesson = timetables.objects.all()
-             
+
     params = {"user_id":user_id, "lesson":lesson}
-    return render(request, 'timetable.html',params)
+    return render(request, 'timetable.html', params)
 
 
 def setting(request):
