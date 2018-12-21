@@ -92,10 +92,24 @@ def createTimetable(request):
 
     print(request.POST)
 
-    """new_data = timetables()
-    new_data.title = request.GET["title"]
-    new_data.teacher = request.GET["teacher"]
-    new_data.start_time = 0"""
+    week_dict = {"月":0,"火":1,"水":2,"木":3,"金":4}
+
+    new_data = timetables()
+    new_data.title = request.POST["title"]
+    new_data.target_id = "hogehoge"
+    new_data.level = 0
+    new_data.room = "INIADホール"
+    new_data.start_time = 0
+    new_data.end_time = 0
+    new_data.week = int(request.POST['time'])
+    new_data.time = week_dict[request.POST['week']]
+    new_data.quater = 0
+    new_data.year = 2018
+    new_data.teacher = "淺野 智之"
+
+    new_data.start_time = 0
+
+    new_data.save()
 
     return redirect("/")
 
