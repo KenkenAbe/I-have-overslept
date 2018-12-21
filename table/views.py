@@ -10,15 +10,22 @@ from datetime import datetime, timedelta, timezone
 # Create your views here.
 def table(request):
     """時間割画面"""
-    lesson = "未登録"
+
+    user_id = ""
+
+    params = {"user_id": user_id, "lessons": {}}
+
     if request.COOKIES.get("key") == None:
         user_id = ""
     else:
         user_id = base64.b64decode(request.COOKIES.get("key") + '=' * (-len(request.COOKIES.get("key")) % 4)).decode(
             "utf-8")
+        timetable_data = timetables.objects.all()
+        for data in timetable_data:
+            params["lessons"][str(data.week)+"_"+str(data.time)] = data
 
-    params = {"user_id":user_id, "lesson":lesson}
-    return render(request, 'timetable.html',params)
+
+    return render(request, 'timetable.html', params)
 
 
 def setting(request):
@@ -92,10 +99,24 @@ def createTimetable(request):
 
     print(request.POST)
 
-    """new_data = timetables()
-    new_data.title = request.GET["title"]
-    new_data.teacher = request.GET["teacher"]
-    new_data.start_time = 0"""
+    week_dict = {"月":0,"火":1,"水":2,"木":3,"金":4}
+
+    new_data = timetables()
+    new_data.title = request.POST["title"]
+    new_data.target_id = "hogehoge"
+    new_data.level = 0
+    new_data.room = "INIADホール"
+    new_data.start_time = 0
+    new_data.end_time = 0
+    new_data.week = week_dict[request.POST['week']]
+    new_data.time = int(request.POST['time'])
+    new_data.quater = 0
+    new_data.year = 2018
+    new_data.teacher = "淺野 智之"
+
+    new_data.start_time = 0
+
+    new_data.save()
 
     return redirect("/")
 
