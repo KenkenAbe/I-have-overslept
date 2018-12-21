@@ -10,24 +10,16 @@ from datetime import datetime, timedelta, timezone
 # Create your views here.
 def table(request):
     """時間割画面"""
-
+    lesson = "未登録"
     if request.COOKIES.get("key") == None:
         user_id = ""
     else:
         user_id = base64.b64decode(request.COOKIES.get("key") + '=' * (-len(request.COOKIES.get("key")) % 4)).decode(
             "utf-8")
 
-    params = {"user_id":user_id}
+    params = {"user_id":user_id, "lesson":lesson}
     return render(request, 'timetable.html',params)
 
-def update(request):
-    if timetables.objects.all == None:
-        lesson = "未登録"
-    else:
-        lesson = timetables.objects.all()
-
-    params = {"lesson":lesson}
-    return render(request, 'timetable.html',params)        
 
 def setting(request):
     """設定画面"""
