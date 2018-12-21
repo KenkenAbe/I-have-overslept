@@ -103,8 +103,8 @@ def createTimetable(request):
     new_data.room = "INIADホール"
     new_data.start_time = 0
     new_data.end_time = 0
-    new_data.week = int(request.POST['time'])
-    new_data.time = week_dict[request.POST['week']]
+    new_data.week = week_dict[request.POST['week']]
+    new_data.time = int(request.POST['time'])
     new_data.quater = 0
     new_data.year = 2018
     new_data.teacher = "淺野 智之"
