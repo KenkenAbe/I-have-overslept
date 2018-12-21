@@ -16,7 +16,9 @@ def table(request):
     else:
         user_id = base64.b64decode(request.COOKIES.get("key") + '=' * (-len(request.COOKIES.get("key")) % 4)).decode(
             "utf-8")
-
+        if timetables.objects.all() != None:
+            lesson = timetables.objects.all()
+             
     params = {"user_id":user_id, "lesson":lesson}
     return render(request, 'timetable.html',params)
 
