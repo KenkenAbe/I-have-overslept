@@ -4,22 +4,54 @@ import urllib
 import json
 import requests
 import base64
-from table.models import timetables
+from table.models import timetables,Users
 from datetime import datetime, timedelta, timezone
+from Crypto import Random
+from Crypto.Cipher import AES
+import string, random
+
+class AESCipher(object):
+    def __init__(self, key, block_size=32):
+        self.bs = block_size
+        if len(key) >= len(str(block_size)):
+            self.key = key[:block_size]
+        else:
+            self.key = self._pad(key)
+
+    def encrypt(self, raw):
+        raw = self._pad(raw)
+        iv = Random.new().read(AES.block_size)
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return base64.b64encode(iv + cipher.encrypt(raw))
+
+    def decrypt(self, enc):
+        enc = base64.b64decode(enc)
+        iv = enc[:AES.block_size]
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return self._unpad(cipher.decrypt(enc[AES.block_size:]))
+
+    def _pad(self, s):
+        return s + (self.bs - len(s) % self.bs) * chr(self.bs - len(s) % self.bs)
+
+    def _unpad(self, s):
+        return s[:-ord(s[len(s)-1:])]
+
 
 # Create your views here.
 def table(request):
     """時間割画面"""
 
-    user_id = ""
-
-    params = {"user_id": user_id, "lessons": {}}
+    params = {"user_id": "", "lessons": {}}
 
     if request.COOKIES.get("key") == None:
-        user_id = ""
+        params["user_id"] = ""
     else:
-        user_id = base64.b64decode(request.COOKIES.get("key") + '=' * (-len(request.COOKIES.get("key")) % 4)).decode(
-            "utf-8")
+        encryption_key = "f012c2a1c35e7952"
+        encryptor = AESCipher(encryption_key)
+
+        token = encryptor.decrypt(request.COOKIES.get("key")).decode("utf-8")
+
+        params["user_id"] = token
         timetable_data = timetables.objects.all()
         for data in timetable_data:
             params["lessons"][str(data.week)+"_"+str(data.time)] = data
@@ -62,7 +94,6 @@ def g_callback(request):
         result = json.loads(res.text)
         id_token = result["id_token"]
         splited_id_token = id_token.split(".")[1]
-        print(splited_id_token)
         raw_info = json.loads(base64.urlsafe_b64decode(splited_id_token + '=' * (-len(splited_id_token) % 4)).decode("utf-8"))
 
         """ここから登録処理を作る"""
@@ -75,9 +106,22 @@ def g_callback(request):
 
         user_info_response = requests.get(url,urllib.parse.urlencode(params))
         user_info = json.loads(user_info_response.text)
+        print(user_info)
 
         response = redirect("/")
-        token = base64.b64encode(bytes(user_info["name"], 'utf-8'))
+
+        current_user_data = Users.objects.filter(Mail=user_info["email"])
+        if current_user_data == None:
+            new_user_data = Users.new()
+            new_user_data.Mail = user_info["email"]
+            new_user_data.Tag = ""
+            new_user_data.UserName = user_info["name"]
+            return redirect("/")
+
+        encryption_key = "f012c2a1c35e7952"
+        encryptor = AESCipher(encryption_key)
+
+        token = encryptor.encrypt(user_info["name"])
 
         #ひとまず名前をbase64encodeしたものをcookieに入れてるけど、セキュリティ上危ないので変更されるべき
 
@@ -112,7 +156,7 @@ def createTimetable(request):
     new_data.time = int(request.POST['time'])
     new_data.quater = 0
     new_data.year = 2018
-    new_data.teacher = "淺野 智之"
+    new_data.teacher = request.POST["teacher"]
 
     new_data.start_time = 0
 

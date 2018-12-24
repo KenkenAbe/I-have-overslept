@@ -34,3 +34,8 @@ class Devices(models.Model):
 class Teachers(models.Model):
     Name = models.CharField(max_length=100)
     Mail = models.CharField(max_length=100)
+
+class Tokens(models.Model):
+    target_id = models.CharField(max_length=256,default="")
+    token = models.CharField(max_length=256,default="")
+    expire = models.IntegerField()
