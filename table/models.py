@@ -34,6 +34,7 @@ class Devices(models.Model):
 class Teachers(models.Model):
     Name = models.CharField(max_length=100)
     Mail = models.CharField(max_length=100)
+    University = models.CharField(max_length=100,default="")
 
 class Tokens(models.Model):
     target_id = models.CharField(max_length=256,default="")
