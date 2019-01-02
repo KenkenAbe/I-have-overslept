@@ -110,7 +110,7 @@ def g_callback(request):
         splited_id_token = id_token.split(".")[1]
         raw_info = json.loads(base64.urlsafe_b64decode(splited_id_token + '=' * (-len(splited_id_token) % 4)).decode("utf-8"))
 
-        """ここから登録処理を作る"""
+        """OpenID Connectの検証処理をここで行う"""
 
         url = "https://www.googleapis.com/oauth2/v1/userinfo"
 
@@ -123,6 +123,9 @@ def g_callback(request):
         print(user_info)
 
         response = redirect("/")
+
+        if user_info["hd"] != "iniad.org":
+            return redirect("/")
 
         current_user_data = Users.objects.filter(Mail=user_info["email"])
         if current_user_data.count() == 0:
