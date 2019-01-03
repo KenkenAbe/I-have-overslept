@@ -235,6 +235,6 @@ def getTableData(request):
         json_response = {
             "status" : "error",
             "content" : None,
-            "error_description" : "Authorization Failed"
+            "error_description" : "Dump Failed"
         }
         return JsonResponse(json_response)
