@@ -22,5 +22,6 @@ urlpatterns = [
     path(r'setting/', views.setting, name='setting'),
     path(r'login/',views.login),
     path(r'login/g/callback',views.g_callback),
-    path(r'timetables/create',views.createTimetable)
+    path(r'timetables/create',views.createTimetable),
+    path(r'api/v1/schedules/json',views.getTableData)
 ]

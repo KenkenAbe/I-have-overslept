@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 import urllib.request as http_request
+from django.http import Http404, JsonResponse
+from django.core import serializers
 import urllib
 import json
 import requests
@@ -210,3 +212,29 @@ def timeGet(time):
     return distance_time
 
 timeGet(datetime(2018,12,17,16,15,00,00,tzinfo=timezone(timedelta(hours=+9), 'JST')))
+
+def getTableData(request):
+    encryption_key = "f012c2a1c35e7952"
+    encryptor = AESCipher(encryption_key)
+
+    try:
+        encrypted_token = encryptor.decrypt(request.META["HTTP_AUTHORIZATION"]).decode("utf-8")
+        print(encrypted_token)
+        target_data = timetables.objects.filter(target_id=encrypted_token)
+        if target_data == None:
+            raise AttributeError
+        else:
+            json_response = {
+                "status" : "accepted",
+                "content" : json.loads(serializers.serialize("json", target_data)),
+                "error_description" : None
+            }
+
+            return JsonResponse(json_response)
+    except:
+        json_response = {
+            "status" : "error",
+            "content" : None,
+            "error_description" : "Authorization Failed"
+        }
+        return JsonResponse(json_response)
