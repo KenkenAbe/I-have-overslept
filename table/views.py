@@ -185,6 +185,13 @@ def createTimetable(request):
 
     week_dict = {"月":0,"火":1,"水":2,"木":3,"金":4}
 
+    conflict_data = timetables.objects.filter(target_id=target_user_id,week=week_dict[request.POST['week']],time=int(request.POST['time']))
+
+    #POSTされた曜日、時間に既にデータが存在するかを確認
+
+    if len(conflict_data) != 0: #存在する場合は邪魔なので削除
+        conflict_data.delete()
+
     new_data = timetables()
     new_data.title = request.POST["title"]
     new_data.target_id = target_user_id
@@ -204,14 +211,15 @@ def createTimetable(request):
 
     return redirect("/")
 
-def timeGet(time):
-    JST = timezone(timedelta(hours=+9), 'JST')
-    now_time = datetime.now(JST)
+def timeGet():
+    UTC = timezone.utc
+    now_time = datetime.now(UTC)
     today_oclock_time = datetime(now_time.year,now_time.month,now_time.day,0,0,0,0)
+
+    time = datetime(now_time.year,now_time.month,now_time.day,16,15,00,00,tzinfo=timezone.utc)
+
     distance_time = int(time.timestamp() - today_oclock_time.timestamp())
     return distance_time
-
-timeGet(datetime(2018,12,17,16,15,00,00,tzinfo=timezone(timedelta(hours=+9), 'JST')))
 
 def getTableData(request):
     encryption_key = "f012c2a1c35e7952"

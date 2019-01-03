@@ -14,6 +14,7 @@ class timetables(models.Model):
     target_id = models.CharField(max_length=256,default="")
     quater = models.IntegerField()
     year = models.IntegerField()
+    isNotification = models.BooleanField()
 
 class Users(models.Model):
     UserName = models.CharField(max_length=100)
@@ -25,7 +26,7 @@ class Notifications(models.Model):
     Target = models.CharField(max_length=100)
     FireTime = models.IntegerField()
     Status = models.IntegerField()
-    IsContact = models.BooleanField()
+    IsContact = models.BooleanField(default=False)
 
 class Devices(models.Model):
     Device = models.IntegerField()
