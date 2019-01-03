@@ -63,6 +63,11 @@ def table(request):
         params["user_id"] = current_user.first().UserName
 
         timetable_data = timetables.objects.filter(target_id=current_user.first().Mail)
+        for i in range(0,7):
+            for j in range(1,7):
+                dummy_data = timetables()
+                dummy_data.title = "　"
+                params["lessons"][str(i) + "_" + str(j)] = dummy_data
         for data in timetable_data:
             params["lessons"][str(data.week) + "_" + str(data.time)] = data
 
@@ -197,15 +202,40 @@ def createTimetable(request):
     new_data.target_id = target_user_id
     new_data.level = 0
     new_data.room = "INIADホール"
-    new_data.start_time = 0
-    new_data.end_time = 0
+
+
+    #曜日ごとに開始時間と終了時間を指定
+    if int(request.POST['time']) == 1:
+        new_data.start_time = 32400
+        new_data.end_time = 37800
+    elif int(request.POST['time']) == 2:
+        new_data.start_time = 38400
+        new_data.end_time = 43800
+    elif int(request.POST['time']) == 3:
+        new_data.start_time = 46800
+        new_data.end_time = 52200
+    elif int(request.POST['time']) == 4:
+        new_data.start_time = 53100
+        new_data.end_time = 58500
+    elif int(request.POST['time']) == 5:
+        new_data.start_time = 59400
+        new_data.end_time = 64800
+    elif int(request.POST['time']) == 6:
+        new_data.start_time = 65700
+        new_data.end_time = 71100
+    else:
+        new_data.start_time = 0
+        new_data.end_time = 0
+
     new_data.week = week_dict[request.POST['week']]
     new_data.time = int(request.POST['time'])
     new_data.quater = 0
-    new_data.year = 2018
+    new_data.year = 2018 #授業開講年度
     new_data.teacher = request.POST["teacher"]
+    new_data.isNotification = False
 
-    new_data.start_time = 0
+    print(new_data.title)
+    print(new_data.isNotification)
 
     new_data.save()
 

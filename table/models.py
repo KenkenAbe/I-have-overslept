@@ -14,7 +14,7 @@ class timetables(models.Model):
     target_id = models.CharField(max_length=256,default="")
     quater = models.IntegerField()
     year = models.IntegerField()
-    isNotification = models.BooleanField()
+    isNotification = models.BooleanField(default=False)
 
 class Users(models.Model):
     UserName = models.CharField(max_length=100)
