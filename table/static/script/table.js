@@ -5,6 +5,13 @@ function rewriteFormModal(week,time){
     var user_cookie = getCookieArray()["key"];
     connectAPI(user_cookie).done(function(response){
         //通信が正常終了した場合の処理
+        if(response.status == 'accepted'){
+        document.getElementsByName("title").value = response.content[0].fields.title;
+        document.getElementsByName("teacher").value = response.content[0].fields.teacher;
+        document.getElementsByName("room").value = response.content[0].fields.room;
+        document.getElementsByName("quater").value = response.content[0].fields.quater;
+        document.getElementsByName("week").value = response.content[0].fields.week;
+        document.getElementsByName("time").value = response.content[0].fields.time;}
         //この先、responseの中に仕様の通りデータが入っているのでこれを使ってフォームを埋めてほしいです・・・
         console.log(response);
     }).fail(function(error){
