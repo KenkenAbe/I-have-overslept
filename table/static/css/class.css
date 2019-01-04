@@ -37,3 +37,7 @@ td {
 td.time {
     background-color: #cccccc;
 }
+
+.btn {
+white-space: normal;
+}
