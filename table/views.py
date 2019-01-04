@@ -210,7 +210,7 @@ def createTimetable(request):
     new_data.title = request.POST["title"]
     new_data.target_id = target_user_id
     new_data.level = 0
-    new_data.room = "INIADホール"
+    new_data.room = request.POST["room"]
 
 
     #曜日ごとに開始時間と終了時間を指定
@@ -238,7 +238,7 @@ def createTimetable(request):
 
     new_data.week = week_dict[request.POST['week']]
     new_data.time = int(request.POST['time'])
-    new_data.quater = 4
+    new_data.quater = int(request.POST['quater'])
     new_data.year = 2018 #授業開講年度
     new_data.teacher = request.POST["teacher"]
     new_data.isNotification = False
