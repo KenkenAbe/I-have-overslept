@@ -6,7 +6,7 @@ import urllib
 import json
 import requests
 import base64
-from table.models import timetables,Users,Teachers
+from table.models import timetables,users,teachers
 from datetime import datetime, timedelta, timezone
 from Crypto import Random
 from Crypto.Cipher import AES
@@ -51,18 +51,18 @@ def table(request):
         encryption_key = "f012c2a1c35e7952"
         encryptor = AESCipher(encryption_key)
 
-        token = encryptor.decrypt(request.COOKIES.get("key")).decode("utf-8")
+        token = encryptor.decrypt(request.COOKIES.get("key")).decode("utf-8").split(":")
 
-        current_user = Users.objects.filter(Mail=token)
+        current_user = users.objects.filter(target_id=token[0],token=token[1])
 
         if current_user == None:
             params["user_id"] = ""
         else:
             params["user_id"] = ""
 
-        params["user_id"] = current_user.first().UserName
+        params["user_id"] = current_user.first().userName
 
-        timetable_data = timetables.objects.filter(target_id=current_user.first().Mail)
+        timetable_data = timetables.objects.filter(target_id=current_user.first().email,quater=4)
         for i in range(0,7):
             for j in range(1,7):
                 dummy_data = timetables()
@@ -71,10 +71,10 @@ def table(request):
         for data in timetable_data:
             params["lessons"][str(data.week) + "_" + str(data.time)] = data
 
-    teachers_data = Teachers.objects.all()
+    teachers_data = teachers.objects.all()
     teachers_arr = []
     for i in teachers_data:
-        teachers_arr.append(i.Name)
+        teachers_arr.append(i.name)
 
     params["teachers"] = teachers_arr
 
@@ -134,24 +134,33 @@ def g_callback(request):
         if user_info["hd"] != "iniad.org":
             return redirect("/")
 
-        current_user_data = Users.objects.filter(Mail=user_info["email"])
+        current_user_data = users.objects.filter(email=user_info["email"])
         if current_user_data.count() == 0:
             print("新規登録")
-            new_user_data = Users()
-            new_user_data.Mail = user_info["email"]
-            new_user_data.Token = ''.join(random.choices(string.ascii_letters + string.digits, k=32))
-            new_user_data.Tag = ""
-            new_user_data.UserName = user_info["name"]
+            new_user_data = users()
+            new_user_data.email = user_info["email"]
+            new_user_data.token = ''.join(random.choices(string.ascii_letters + string.digits, k=32))
+            new_user_data.target_id = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+            new_user_data.userName = user_info["name"]
+            new_user_data.admission_year = 2018
+            new_user_data.permission_level = 0
 
             new_user_data.save()
+
+            encryption_key = "f012c2a1c35e7952"
+            encryptor = AESCipher(encryption_key)
+
+            token = encryptor.encrypt(new_user_data.target_id+":"+new_user_data.token)
         else:
             print("ユーザーが存在しています")
 
+            encryption_key = "f012c2a1c35e7952"
+            encryptor = AESCipher(encryption_key)
 
-        encryption_key = "f012c2a1c35e7952"
-        encryptor = AESCipher(encryption_key)
+            token = encryptor.encrypt(current_user_data[0].target_id+":"+current_user_data[0].token)
 
-        token = encryptor.encrypt(user_info["email"])
+
+
 
         #ひとまず名前をbase64encodeしたものをcookieに入れてるけど、セキュリティ上危ないので変更されるべき
 
@@ -179,11 +188,11 @@ def createTimetable(request):
         encryption_key = "f012c2a1c35e7952"
         encryptor = AESCipher(encryption_key)
 
-        token = encryptor.decrypt(request.COOKIES.get("key")).decode("utf-8")
+        token = encryptor.decrypt(request.COOKIES.get("key")).decode("utf-8").split(":")
 
-        current_user = Users.objects.filter(Mail=token)
+        current_user = users.objects.filter(target_id=token[0],token=token[1])
 
-        target_user_id = current_user.first().Mail
+        target_user_id = current_user.first().email
 
 
 
@@ -229,7 +238,7 @@ def createTimetable(request):
 
     new_data.week = week_dict[request.POST['week']]
     new_data.time = int(request.POST['time'])
-    new_data.quater = 0
+    new_data.quater = 4
     new_data.year = 2018 #授業開講年度
     new_data.teacher = request.POST["teacher"]
     new_data.isNotification = False

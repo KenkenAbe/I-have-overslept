@@ -16,28 +16,25 @@ class timetables(models.Model):
     year = models.IntegerField()
     isNotification = models.BooleanField(default=False)
 
-class Users(models.Model):
-    UserName = models.CharField(max_length=100)
-    Token = models.CharField(max_length=100)
-    Tag = models.CharField(max_length=100)
-    Mail = models.CharField(max_length=100)
+class users(models.Model):
+    userName = models.CharField(max_length=100)
+    token = models.CharField(max_length=100)
+    target_id = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    admission_year = models.IntegerField()
+    permission_level = models.IntegerField()
 
-class Notifications(models.Model):
-    Target = models.CharField(max_length=100)
-    FireTime = models.IntegerField()
-    Status = models.IntegerField()
-    IsContact = models.BooleanField(default=False)
+class notifications(models.Model):
+    target = models.CharField(max_length=100)
+    fireTime = models.IntegerField()
+    status = models.IntegerField()
+    isContact = models.BooleanField(default=False)
 
-class Devices(models.Model):
-    Device = models.IntegerField()
-    Token = models.CharField(max_length=100)
+class devices(models.Model):
+    device = models.IntegerField()
+    token = models.CharField(max_length=100)
 
-class Teachers(models.Model):
-    Name = models.CharField(max_length=100)
-    Mail = models.CharField(max_length=100)
-    University = models.CharField(max_length=100,default="")
-
-class Tokens(models.Model):
-    target_id = models.CharField(max_length=256,default="")
-    token = models.CharField(max_length=256,default="")
-    expire = models.IntegerField()
+class teachers(models.Model):
+    name = models.CharField(max_length=100)
+    mail = models.CharField(max_length=100)
+    university = models.CharField(max_length=100,default="")
