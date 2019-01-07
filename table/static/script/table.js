@@ -3,10 +3,24 @@ function rewriteFormModal(week,time){
     document.getElementById("form-week").value = weeks[week];
     document.getElementById("form-time").value = String(time);
     var user_cookie = getCookieArray()["key"];
-    connectAPI(user_cookie).done(function(response){
+    if (user_cookie.slice(0,1) == "\""){
+      user_cookie = user_cookie.slice(1)
+    }
+    connectAPI(user_cookie,week,time).done(function(response){
         //通信が正常終了した場合の処理
         //この先、responseの中に仕様の通りデータが入っているのでこれを使ってフォームを埋めてほしいです・・・
         console.log(response);
+        if (response.status == "accepted"){
+            document.getElementsByName("teacher")[0].value = response.content[0].fields.teacher;
+            document.getElementsByName("title")[0].value = response.content[0].fields.title;
+            document.getElementsByName("room")[0].value = response.content[0].fields.room;
+            document.getElementsByName("quater")[0].value = response.content[0].fields.quater;
+        }else{
+            document.getElementsByName("teacher")[0].value = "";
+            document.getElementsByName("title")[0].value = "";
+            document.getElementsByName("room")[0].value = "";
+            document.getElementsByName("quater")[0].value = "";
+        }
     }).fail(function(error){
         //通信が異常終了した場合の処理
         console.log(error);
@@ -25,9 +39,9 @@ function getCookieArray(){
   return arr;
 }
 
-function connectAPI(token){
+function connectAPI(token,week,time){
     return $.ajax({
-        url: "https://scheduler.iniadstulab.jp/api/v1/schedules/json",
+        url: "https://scheduler.iniadstulab.jp/api/v1/schedules/json?week="+week+"&time="+time,
         dataType: "json",
         type: "GET",
         beforeSend: function(xhr){
