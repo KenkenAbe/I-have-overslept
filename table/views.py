@@ -27,7 +27,7 @@ class AESCipher(object):
         return base64.b64encode(iv + cipher.encrypt(raw))
 
     def decrypt(self, enc):
-        enc = base64.b64decode(enc)
+        enc = base64.b64decode(enc + '=' * (-len(enc) % 4))
         iv = enc[:AES.block_size]
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
         return self._unpad(cipher.decrypt(enc[AES.block_size:]))
@@ -46,6 +46,7 @@ def table(request):
     params = {"user_id": "", "lessons": {}}
 
     if request.COOKIES.get("key") == None:
+        return redirect("/login")
         params["user_id"] = ""
     else:
         encryption_key = "f012c2a1c35e7952"
@@ -264,17 +265,21 @@ def getTableData(request):
     encryption_key = "f012c2a1c35e7952"
     encryptor = AESCipher(encryption_key)
 
+    print(request.META["HTTP_AUTHORIZATION"])
+    encrypted_token = encryptor.decrypt(request.META["HTTP_AUTHORIZATION"]).decode("utf-8").split(":")
+    print(encrypted_token)
+    user = users.objects.filter(target_id=encrypted_token[0], token=encrypted_token[1])[0]
+    target_data = timetables.objects.filter(target_id=user.email,week=request.GET["week"],time=request.GET["time"],quater=4)
+
+
     try:
-        encrypted_token = encryptor.decrypt(request.META["HTTP_AUTHORIZATION"]).decode("utf-8")
-        print(encrypted_token)
-        target_data = timetables.objects.filter(target_id=encrypted_token)
-        if target_data == None:
+        if len(target_data) == 0:
             raise AttributeError
         else:
             json_response = {
-                "status" : "accepted",
-                "content" : json.loads(serializers.serialize("json", target_data)),
-                "error_description" : None
+                "status": "accepted",
+                "content": json.loads(serializers.serialize("json", target_data)),
+                "error_description": None
             }
 
             return JsonResponse(json_response)

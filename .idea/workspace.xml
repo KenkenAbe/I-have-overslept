@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1f6832c-a859-45af-ad34-134bba1b4f7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/templates/timetable.html" beforeDir="false" afterPath="$PROJECT_DIR$/table/templates/timetable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table/static/script/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/table/static/script/table.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/table/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/table/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +30,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/table/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="240" column="46" selection-start-line="240" selection-start-column="46" selection-end-line="240" selection-end-column="46" />
+            <state relative-caret-position="240">
+              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/table/static/script/table.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -113,7 +124,6 @@
       <list>
         <option value="$PROJECT_DIR$/config/settings.py" />
         <option value="$PROJECT_DIR$/table/urls.py" />
-        <option value="$PROJECT_DIR$/table/static/script/table.js" />
         <option value="$PROJECT_DIR$/table/migrations/0003_auto_20190103_1652.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/table/migrations/0004_auto_20190103_1946.py" />
@@ -121,6 +131,7 @@
         <option value="$PROJECT_DIR$/table/models.py" />
         <option value="$PROJECT_DIR$/table/static/css/class.css" />
         <option value="$PROJECT_DIR$/table/templates/timetable.html" />
+        <option value="$PROJECT_DIR$/table/static/script/table.js" />
         <option value="$PROJECT_DIR$/table/views.py" />
       </list>
     </option>
@@ -252,12 +263,12 @@
       <workItem from="1545371729983" duration="33000" />
       <workItem from="1545390411112" duration="1828000" />
       <workItem from="1545637774362" duration="7341000" />
-      <workItem from="1546577595899" duration="815000" />
+      <workItem from="1546577595899" duration="4229000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50831000" />
+    <option name="totallyTimeSpent" value="54245000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -270,7 +281,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21855922" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -360,13 +370,6 @@
     <entry file="file://$PROJECT_DIR$/table/templates/setting.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/table/static/script/table.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/table/migrations/0003_auto_20190103_1652.py" />
     <entry file="file://$PROJECT_DIR$/table/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -427,8 +430,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/table/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="240" column="46" selection-start-line="240" selection-start-column="46" selection-end-line="240" selection-end-column="46" />
+        <state relative-caret-position="240">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/table/static/script/table.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
         </state>
       </provider>
     </entry>
