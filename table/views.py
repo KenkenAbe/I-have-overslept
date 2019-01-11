@@ -302,3 +302,7 @@ def checkAlermStatus(request):
 
         elif i.fireTime >= now_time+600 and i.status == 1 and i.isContact == False:
             #ぼくはねぼうしました
+
+def alertTime():
+    timetable_data = timetables.objects.filter(week=datetime().today.weekday,quater=4)
+    
