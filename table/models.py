@@ -38,3 +38,4 @@ class teachers(models.Model):
     name = models.CharField(max_length=100)
     mail = models.CharField(max_length=100)
     university = models.CharField(max_length=100,default="")
+

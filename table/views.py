@@ -6,11 +6,12 @@ import urllib
 import json
 import requests
 import base64
-from table.models import timetables,users,teachers
+from table.models import timetables,users,teachers,notifications
 from datetime import datetime, timedelta, timezone
 from Crypto import Random
 from Crypto.Cipher import AES
 import string, random
+import time, datetime
 
 class AESCipher(object):
     def __init__(self, key, block_size=32):
@@ -290,3 +291,14 @@ def getTableData(request):
             "error_description" : "Dump Failed"
         }
         return JsonResponse(json_response)
+
+def checkAlermStatus(request):
+    pended_notify_data = notifications.objects.all()
+
+    now_time = time.time()
+    for i in pended_notify_data:
+        if i.fireTime >= now_time and i.status == 1 and i.isContact == False:
+            #発火
+
+        elif i.fireTime >= now_time+600 and i.status == 1 and i.isContact == False:
+            #ぼくはねぼうしました
