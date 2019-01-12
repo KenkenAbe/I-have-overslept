@@ -28,10 +28,11 @@ class notifications(models.Model):
     target = models.CharField(max_length=100)
     fireTime = models.IntegerField()
     status = models.IntegerField()
+    targetTeacher = models.CharField(max_length=100,default="")
     isContact = models.BooleanField(default=False)
 
 class devices(models.Model):
-    device = models.IntegerField()
+    target = models.CharField(max_length=100,default="")
     token = models.CharField(max_length=100)
 
 class teachers(models.Model):

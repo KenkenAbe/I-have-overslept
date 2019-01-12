@@ -6,7 +6,7 @@ import urllib
 import json
 import requests
 import base64
-from table.models import timetables,users,teachers,notifications
+from table.models import timetables,users,teachers,notifications,devices
 from datetime import datetime, timedelta, timezone
 from Crypto import Random
 from Crypto.Cipher import AES
@@ -296,9 +296,47 @@ def checkAlermStatus(request):
     pended_notify_data = notifications.objects.all()
 
     now_time = time.time()
+
+    tokens = []
+
     for i in pended_notify_data:
-        if i.fireTime >= now_time and i.status == 1 and i.isContact == False:
-            #発火
+        if i.fireTime >= now_time and i.status == 0 and i.isContact == False:
+            #時間を超過している未発火の通知を発射（えいっ）
+            try:
+                target_device = devices.objects.filter(target=i.target)
+                token = target_device[0].token
+
+                tokens.append(token)
+
+                i.status = 1  # DBの状態変更
+                i.save()
+            except:
+                break
+
+
 
         elif i.fireTime >= now_time+600 and i.status == 1 and i.isContact == False:
-            #ぼくはねぼうしました
+            #通知発火から10分後+まだ起きてない = ぼくはねぼうしました
+
+            #TODO:SendGridを通して教員にメール
+
+
+            i.status = 2 #DBの状態変更
+            i.save()
+
+    #TODO:Gaurunに対して通知の発火処理
+    notify_server_url = "http://localhost:1057/push"
+    params = {
+        "notifications": [
+            {
+                "token": tokens,
+                "platform": 1,
+                "message": "{\"action\":\"call\"}"
+            }
+        ]
+    }
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    requests.post(notify_server_url,json.dumps(params),headers=headers)
