@@ -340,3 +340,10 @@ def checkAlermStatus(request):
     }
 
     requests.post(notify_server_url,json.dumps(params),headers=headers)
+            #ぼくはねぼうしました
+
+def alertTime():
+    timetable_data = timetables.objects.filter(week=datetime().today.weekday,quater=4)
+    start = timetable_data.start_time()
+    #setTime = 
+    #fireTime = start - setTime
