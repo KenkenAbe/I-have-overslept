@@ -12,6 +12,9 @@ from Crypto import Random
 from Crypto.Cipher import AES
 import string, random
 import time, datetime
+import re
+import sendgrid
+from sendgrid.helpers.mail import *
 
 class AESCipher(object):
     def __init__(self, key, block_size=32):
@@ -295,55 +298,65 @@ def getTableData(request):
 
 def checkAlermStatus(request):
     pended_notify_data = notifications.objects.all()
+    now_time = datetime.datetime.today() + datetime.timedelta(hours=9)
 
-    now_time = time.time()
+    now_time_from_oclock = datetime.datetime(1970,1,1,now_time.hour,now_time.minute)
 
+    print("現在時刻：",int(now_time_from_oclock.timestamp()))
     pending_start_call_tokens = []
     pending_timeout_call_tokens = []
 
     for i in pended_notify_data:
-        if i.fireTime >= now_time and i.status == 0 and i.isContact == False:
+        if i.fireTime <= int(now_time_from_oclock.timestamp()) and i.status == 0 and i.isContact == False:
             #時間を超過している未発火の通知を発射（えいっ）
-            try:
-                target_device = devices.objects.filter(target=i.target)
-                token = target_device[0].token
+            target_device = devices.objects.filter(target_id=i.target).first()
+            token = target_device.device_token
 
-                pending_start_call_tokens.append(token)
-
-
-            except:
-                break
+            pending_start_call_tokens.append(token)
 
             i.status = 1  # DBの状態変更
             i.save()
 
 
 
-        elif i.fireTime+600 >= now_time and i.status == 1 and i.isContact == False:
+        elif i.fireTime+30 <= int(now_time_from_oclock.timestamp()) and i.status == 1 and i.isContact == False:
             #通知発火から10分後+まだ起きてない = ぼくはねぼうしました
             #ここで引っかかった時点でもう遅い
 
             #TODO:SendGridを通して教員にメール
-            try:
-                target_device = devices.objects.filter(target=i.target)
-                token = target_device[0].token
+            target_device = devices.objects.filter(target_id=i.target)
+            token = target_device[0].device_token
 
-                pending_timeout_call_tokens.append(token)
+            pending_timeout_call_tokens.append(token)
 
-                target_teacher = teachers.objects.filter(name=i.targetTeacher)[0]
+            target_teacher = teachers.objects.filter(name=i.targetTeacher)[0]
 
-                target_teacher_email = target_teacher.mail
-                target_teacher_name = target_teacher.name
+            target_teacher_email = target_teacher.mail
+            target_teacher_name = target_teacher.name
 
+            sendgrid_api_key = "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"
 
-            except:
-                break
+            this_user = users.objects.filter(target_id=i.target)[0]
+
+            this_user_mail = this_user.email
+            this_user_name = this_user.userName
+
+            text = "{0}先生\nお世話になっております。\n{1}を受講している　{2}（学籍番号：{3}）です。\n本日の授業ですが、ぼくはねぼうしました。".format(target_teacher_name,i.title,this_user_name,re.search("s(.*).@iniad.org", this_user_mail)[1])
+
+            sg_client = sendgrid.SendGridAPIClient(sendgrid_api_key)
+
+            from_email = Email(this_user_mail)
+            to_email = Email(target_teacher_email)
+            subject = "今日の{0}の授業について".format(i.title)
+            content = Content("text/plain", text)
+            mail = Mail(from_email, subject, to_email, content)
+            response = sg_client.client.mail.send.post(request_body=mail.get())
 
             i.status = 2  # DBの状態変更
             i.save()
 
 
-    #TODO:Gaurunに対して通知の発火処理
+    #Gaurunに対して通知の発火処理
     notify_server_url = "http://localhost:1057/push"
     params_start = {
         "notifications": [
@@ -374,8 +387,49 @@ def checkAlermStatus(request):
     requests.post(notify_server_url, json.dumps(params_stop), headers=headers)
             #ぼくはねぼうしました
 
+    json_response = {
+        "status": "accepted",
+        "content": None,
+        "error_description": None
+    }
+
+    return JsonResponse(json_response)
+
 def alertTime():
-    timetable_data = timetables.objects.filter(week=datetime().today.weekday,quater=4)
+    timetable_data = timetables.objects.filter(week=datetime.date.today().weekday(),quater=4)
     start = timetable_data.start_time()
     #setTime = 
     #fireTime = start - setTime
+
+def initialize_alert(request):
+    today_time = datetime.datetime.today() + datetime.timedelta(hours=9)
+    timetable_data = timetables.objects.filter(week=today_time.weekday(),quater=4) #今日開講予定で登録されている時間割を取得
+
+    current_notify_queue = notifications.objects.all()
+
+    current_notify_queue.delete()
+
+    for i in timetable_data:
+        user_device = devices.objects.filter(target_id=i.target_id)
+        print(i.target_id)
+        print(i.title)
+        if user_device == None:
+            continue
+        else:
+            new_pending_alert = notifications()
+            new_pending_alert.target = i.target_id
+            new_pending_alert.targetTeacher = i.teacher
+            new_pending_alert.fireTime = i.start_time - 60*60*6
+            new_pending_alert.status = 0
+            new_pending_alert.isContact = False
+            new_pending_alert.title = i.title
+
+            new_pending_alert.save()
+
+    json_response = {
+        "status": "accepted",
+        "content": None,
+        "error_description": None
+    }
+
+    return JsonResponse(json_response)

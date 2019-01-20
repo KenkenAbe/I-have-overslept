@@ -23,5 +23,7 @@ urlpatterns = [
     path(r'login/',views.login),
     path(r'login/g/callback',views.g_callback),
     path(r'timetables/create',views.createTimetable),
-    path(r'api/v1/schedules/json',views.getTableData)
+    path(r'api/v1/schedules/json',views.getTableData),
+    path(r'api/v1/setting/notify',views.initialize_alert),
+    path(r'api/v1/notify/send',views.checkAlermStatus)
 ]
