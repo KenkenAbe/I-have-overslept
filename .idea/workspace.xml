@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1f6832c-a859-45af-ad34-134bba1b4f7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/migrations/0002_auto_20190103_2154.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/migrations/0002_devices_notifications_teachers_users.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/migrations/0003_auto_20190103_2159.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/migrations/0003_tokens.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/migrations/0004_teachers_university.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/table/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/table/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/table/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,17 +32,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/table/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3090">
-              <caret line="311" column="24" lean-forward="true" selection-start-line="311" selection-start-column="24" selection-end-line="311" selection-end-column="24" />
+            <state relative-caret-position="930">
+              <caret line="364" column="13" lean-forward="true" selection-start-line="364" selection-start-column="13" selection-end-line="364" selection-end-column="13" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
-                <element signature="e#444#1276#0" />
-                <element signature="e#1329#2588#0" />
-                <element signature="e#2617#2670#0" />
-                <element signature="e#2696#3000#0" />
-                <element signature="e#5663#5722#0" />
-                <element signature="e#8022#8353#0" />
-                <element signature="e#8386#9404#0" />
               </folding>
             </state>
           </provider>
@@ -70,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/table/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="630">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
             </state>
           </provider>
         </entry>
@@ -83,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/table/templates/timetable.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
+            <state relative-caret-position="2565">
               <caret line="171" column="44" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
             </state>
           </provider>
@@ -92,7 +76,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-250">
+            <state relative-caret-position="405">
               <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
             </state>
           </provider>
@@ -116,8 +100,8 @@
         <option value="$PROJECT_DIR$/table/templates/timetable.html" />
         <option value="$PROJECT_DIR$/table/static/script/table.js" />
         <option value="$PROJECT_DIR$/table/migrations/0004_teachers_university.py" />
-        <option value="$PROJECT_DIR$/table/views.py" />
         <option value="$PROJECT_DIR$/table/models.py" />
+        <option value="$PROJECT_DIR$/table/views.py" />
       </list>
     </option>
   </component>
@@ -133,7 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -187,6 +170,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -254,7 +238,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60545000" />
+    <option name="totallyTimeSpent" value="60552000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -267,8 +251,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22100122" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22344323" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -401,13 +386,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/table/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/table/migrations/0001_initial.py" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -415,49 +394,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/table/migrations/0006_auto_20190111_0716.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table/migrations/0002_auto_20190103_2154.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table/migrations/0003_tokens.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table/migrations/0005_merge_20190111_0707.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/table/migrations/0006_auto_20190111_0716.py" />
+    <entry file="file://$PROJECT_DIR$/table/migrations/0002_auto_20190103_2154.py" />
+    <entry file="file://$PROJECT_DIR$/table/migrations/0003_tokens.py" />
+    <entry file="file://$PROJECT_DIR$/table/migrations/0005_merge_20190111_0707.py" />
     <entry file="file://$PROJECT_DIR$/config/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-250">
+        <state relative-caret-position="405">
           <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/table/migrations/0003_auto_20190103_2159.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table/migrations/0004_teachers_university.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table/migrations/0004_merge_20190111_0721.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/table/migrations/0003_auto_20190103_2159.py" />
+    <entry file="file://$PROJECT_DIR$/table/migrations/0004_teachers_university.py" />
+    <entry file="file://$PROJECT_DIR$/table/migrations/0004_merge_20190111_0721.py" />
     <entry file="file://$PROJECT_DIR$/table/templates/timetable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
+        <state relative-caret-position="2565">
           <caret line="171" column="44" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
         </state>
       </provider>
@@ -468,7 +421,7 @@
     <entry file="file://$PROJECT_DIR$/table/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
@@ -481,17 +434,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/table/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3090">
-          <caret line="311" column="24" lean-forward="true" selection-start-line="311" selection-start-column="24" selection-end-line="311" selection-end-column="24" />
+        <state relative-caret-position="930">
+          <caret line="364" column="13" lean-forward="true" selection-start-line="364" selection-start-column="13" selection-end-line="364" selection-end-column="13" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
-            <element signature="e#444#1276#0" />
-            <element signature="e#1329#2588#0" />
-            <element signature="e#2617#2670#0" />
-            <element signature="e#2696#3000#0" />
-            <element signature="e#5663#5722#0" />
-            <element signature="e#8022#8353#0" />
-            <element signature="e#8386#9404#0" />
           </folding>
         </state>
       </provider>

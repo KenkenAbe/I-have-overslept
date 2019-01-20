@@ -297,7 +297,8 @@ def checkAlermStatus(request):
 
     now_time = time.time()
 
-    tokens = []
+    pending_start_call_tokens = []
+    pending_timeout_call_tokens = []
 
     for i in pended_notify_data:
         if i.fireTime >= now_time and i.status == 0 and i.isContact == False:
@@ -306,30 +307,47 @@ def checkAlermStatus(request):
                 target_device = devices.objects.filter(target=i.target)
                 token = target_device[0].token
 
-                tokens.append(token)
+                pending_start_call_tokens.append(token)
 
-                i.status = 1  # DBの状態変更
-                i.save()
+
             except:
                 break
 
+            i.status = 1  # DBの状態変更
+            i.save()
 
 
-        elif i.fireTime >= now_time+600 and i.status == 1 and i.isContact == False:
+
+        elif i.fireTime+600 >= now_time and i.status == 1 and i.isContact == False:
             #通知発火から10分後+まだ起きてない = ぼくはねぼうしました
+            #ここで引っかかった時点でもう遅い
 
             #TODO:SendGridを通して教員にメール
+            try:
+                target_device = devices.objects.filter(target=i.target)
+                token = target_device[0].token
+
+                pending_timeout_call_tokens.append(token)
+
+                target_teacher = teachers.objects.filter(name=i.targetTeacher)[0]
+
+                target_teacher_email = target_teacher.mail
+                target_teacher_name = target_teacher.name
 
 
-            i.status = 2 #DBの状態変更
+            except:
+                break
+
+            i.status = 2  # DBの状態変更
             i.save()
+
 
     #TODO:Gaurunに対して通知の発火処理
     notify_server_url = "http://localhost:1057/push"
-    params = {
+    params_start = {
         "notifications": [
             {
-                "token": tokens,
+                "token": pending_start_call_tokens,
                 "platform": 1,
                 "message": "{\"action\":\"call\"}"
             }
@@ -339,7 +357,20 @@ def checkAlermStatus(request):
         'Content-Type': 'application/json'
     }
 
-    requests.post(notify_server_url,json.dumps(params),headers=headers)
+    requests.post(notify_server_url,json.dumps(params_start),headers=headers)
+
+    #着信停止の処理（いつまでも鳴り続けるため）
+    params_stop = {
+        "notifications": [
+            {
+                "token": pending_timeout_call_tokens,
+                "platform": 1,
+                "message": "{\"action\":\"timeout\"}"
+            }
+        ]
+    }
+
+    requests.post(notify_server_url, json.dumps(params_stop), headers=headers)
             #ぼくはねぼうしました
 
 def alertTime():
