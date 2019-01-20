@@ -8,13 +8,6 @@ function rewriteFormModal(week,time){
     }
     connectAPI(user_cookie,week,time).done(function(response){
         //通信が正常終了した場合の処理
-        if(response.status == 'accepted'){
-        document.getElementsByName("title")[0].value = response.content[0].fields.title;
-        document.getElementsByName("teacher")[0].value = response.content[0].fields.teacher;
-        document.getElementsByName("room")[0].value = response.content[0].fields.room;
-        document.getElementsByName("quater")[0].value = response.content[0].fields.quater;
-        document.getElementsByName("week")[0].value = response.content[0].fields.week;
-        document.getElementsByName("time")[0].value = response.content[0].fields.time;}
         //この先、responseの中に仕様の通りデータが入っているのでこれを使ってフォームを埋めてほしいです・・・
         console.log(response);
         if (response.status == "accepted"){
@@ -22,11 +15,13 @@ function rewriteFormModal(week,time){
             document.getElementsByName("title")[0].value = response.content[0].fields.title;
             document.getElementsByName("room")[0].value = response.content[0].fields.room;
             document.getElementsByName("quater")[0].value = response.content[0].fields.quater;
+            document.getElementsByName("week")[0].value = weeks[response.content[0].fields.week];
         }else{
             document.getElementsByName("teacher")[0].value = "";
             document.getElementsByName("title")[0].value = "";
             document.getElementsByName("room")[0].value = "";
             document.getElementsByName("quater")[0].value = "";
+            document.getElementsByName("week")[0].value = "";
         }
     }).fail(function(error){
         //通信が異常終了した場合の処理

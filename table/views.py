@@ -64,7 +64,7 @@ def table(request):
 
         params["user_id"] = current_user.first().userName
 
-        timetable_data = timetables.objects.filter(target_id=current_user.first().email,quater=4)
+        timetable_data = timetables.objects.filter(target_id=current_user.first().target_id,quater=4)
         for i in range(0,7):
             for j in range(1,7):
                 dummy_data = timetables()
@@ -194,18 +194,19 @@ def createTimetable(request):
 
         current_user = users.objects.filter(target_id=token[0],token=token[1])
 
-        target_user_id = current_user.first().email
+        target_user_id = current_user.first().target_id
 
 
 
 
     week_dict = {"月":0,"火":1,"水":2,"木":3,"金":4}
 
-    conflict_data = timetables.objects.filter(target_id=target_user_id,week=week_dict[request.POST['week']],time=int(request.POST['time']))
+    conflict_data = timetables.objects.filter(target_id=target_user_id,week=week_dict[request.POST['week']],time=int(request.POST['time']),quater=int(request.POST['quater']))
 
     #POSTされた曜日、時間に既にデータが存在するかを確認
 
     if len(conflict_data) != 0: #存在する場合は邪魔なので削除
+        print("重複データあり")
         conflict_data.delete()
 
     new_data = timetables()
@@ -270,7 +271,7 @@ def getTableData(request):
     encrypted_token = encryptor.decrypt(request.META["HTTP_AUTHORIZATION"]).decode("utf-8").split(":")
     print(encrypted_token)
     user = users.objects.filter(target_id=encrypted_token[0], token=encrypted_token[1])[0]
-    target_data = timetables.objects.filter(target_id=user.email,week=request.GET["week"],time=request.GET["time"],quater=4)
+    target_data = timetables.objects.filter(target_id=user.target_id,week=request.GET["week"],time=request.GET["time"],quater=4)
 
 
     try:
