@@ -319,7 +319,7 @@ def checkAlermStatus(request):
 
 
 
-        elif i.fireTime+30 <= int(now_time_from_oclock.timestamp()) and i.status == 1 and i.isContact == False:
+        elif i.fireTime+600 <= int(now_time_from_oclock.timestamp()) and i.status == 1 and i.isContact == False:
             #通知発火から10分後+まだ起きてない = ぼくはねぼうしました
             #ここで引っかかった時点でもう遅い
 

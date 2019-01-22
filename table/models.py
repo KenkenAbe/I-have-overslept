@@ -31,6 +31,7 @@ class notifications(models.Model):
     targetTeacher = models.CharField(max_length=100, default="")
     isContact = models.BooleanField(default=False)
     title = models.CharField(max_length=100,default="")
+    isProcessOnRails = models.BooleanField(default=False)
 
 class devices(models.Model):
     target_id = models.CharField(max_length=100,default="")
