@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1f6832c-a859-45af-ad34-134bba1b4f7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/table/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/table/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/table/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/table/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/table/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
-              <caret line="316" column="35" lean-forward="true" selection-start-line="316" selection-start-column="35" selection-end-line="316" selection-end-column="35" />
+            <state relative-caret-position="320">
+              <caret line="421" column="50" lean-forward="true" selection-start-line="421" selection-start-column="50" selection-end-line="421" selection-end-column="50" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -113,7 +111,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/table/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="380">
@@ -143,8 +141,8 @@
         <option value="$PROJECT_DIR$/table/migrations/0004_auto_20190120_2011.py" />
         <option value="$PROJECT_DIR$/table/migrations/0005_auto_20190120_2012.py" />
         <option value="$PROJECT_DIR$/table/urls.py" />
-        <option value="$PROJECT_DIR$/table/views.py" />
         <option value="$PROJECT_DIR$/table/models.py" />
+        <option value="$PROJECT_DIR$/table/views.py" />
       </list>
     </option>
   </component>
@@ -277,12 +275,12 @@
       <workItem from="1545637774362" duration="7341000" />
       <workItem from="1546577595899" duration="4229000" />
       <workItem from="1547188373960" duration="6300000" />
-      <workItem from="1548177045959" duration="215000" />
+      <workItem from="1548177045959" duration="361000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71220000" />
+    <option name="totallyTimeSpent" value="71366000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,16 +430,6 @@
     <entry file="file://$PROJECT_DIR$/table/migrations/0004_auto_20190120_2006.py" />
     <entry file="file://$PROJECT_DIR$/table/migrations/0004_auto_20190120_2009.py" />
     <entry file="file://$PROJECT_DIR$/table/migrations/0005_auto_20190120_2010.py" />
-    <entry file="file://$PROJECT_DIR$/table/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="316" column="35" lean-forward="true" selection-start-line="316" selection-start-column="35" selection-end-line="316" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/table/templates/setting.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -497,6 +485,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/table/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="421" column="50" lean-forward="true" selection-start-line="421" selection-start-column="50" selection-end-line="421" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

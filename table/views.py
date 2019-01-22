@@ -319,7 +319,7 @@ def checkAlermStatus(request):
 
 
 
-        elif i.fireTime+600 <= int(now_time_from_oclock.timestamp()) and i.status == 1 and i.isContact == False:
+        elif i.fireTime+600 <= int(now_time_from_oclock.timestamp()) and i.status == 1 and i.isContact == False and i.isProcessOnRails == False:
             #通知発火から10分後+まだ起きてない = ぼくはねぼうしました
             #ここで引っかかった時点でもう遅い
 
@@ -423,6 +423,7 @@ def initialize_alert(request):
             new_pending_alert.status = 0
             new_pending_alert.isContact = False
             new_pending_alert.title = i.title
+            new_pending_alert.isProcessOnRails = False
 
             new_pending_alert.save()
 
