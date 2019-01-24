@@ -22,6 +22,7 @@
         <a href="/setting/">設定はこちら</a>
         <p>Welcome back, {{ user_id }}!</p>
         <br><br>
+        <div class="center-block">
             <table class="table-responsive">
                 <tr class="week">
                     <th>　</th>
@@ -98,7 +99,7 @@
                     <td id="i6"><button onclick="rewriteFormModal(4,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_6.title }}</button></td>
                     <td id="d6"><button onclick="rewriteFormModal(5,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_6.title }}</button></td>
                 </tr>
-            </table>
+            </table></div>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
