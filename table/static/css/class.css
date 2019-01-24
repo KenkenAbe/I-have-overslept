@@ -1,12 +1,17 @@
 body {
     font-family: sans-serif;
+    overflow: visible !important;
+    background: -webkit-linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
+    background: -moz-linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
+    background: -ms-linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
+    background: -o-linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
+    background: linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
 }
 
 h1 {
-    color: white;
+    color: #eeff01;
     text-shadow: 2px 2px 2px #aaaaaa;
     text-align: center;
-    background-color: #444444;
 }
 
 h2 {
