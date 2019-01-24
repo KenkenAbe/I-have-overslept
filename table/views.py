@@ -88,7 +88,25 @@ def table(request):
 
 def setting(request):
     """設定画面"""
-    return render(request, 'setting.html')
+    params = {"user_id": ""}
+
+    if request.COOKIES.get("key") == None:
+        return redirect("/login")
+        params["user_id"] = ""
+    else:
+        encryption_key = "f012c2a1c35e7952"
+        encryptor = AESCipher(encryption_key)
+
+        token = encryptor.decrypt(request.COOKIES.get("key")).decode("utf-8").split(":")
+
+        current_user = users.objects.filter(target_id=token[0], token=token[1])
+
+        if current_user == None:
+            params["user_id"] = ""
+        else:
+            params["user_id"] = current_user.first().userName
+
+    return render(request, 'setting.html',params)
 
 def login(request):
     """Googleへのログイン（そのままリダイレクト）"""
