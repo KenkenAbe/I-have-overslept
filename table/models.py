@@ -23,6 +23,7 @@ class users(models.Model):
     email = models.CharField(max_length=100)
     admission_year = models.IntegerField()
     permission_level = models.IntegerField()
+    offset_time = models.IntegerField()
 
 class notifications(models.Model):
     target = models.CharField(max_length=100)

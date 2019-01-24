@@ -149,6 +149,7 @@ def g_callback(request):
             new_user_data.userName = user_info["name"]
             new_user_data.admission_year = 2018
             new_user_data.permission_level = 0
+            new_user_data.offset_time = 0
 
             new_user_data.save()
 
@@ -405,9 +406,10 @@ def initialize_alert(request):
     today_time = datetime.datetime.today() + datetime.timedelta(hours=9)
     timetable_data = timetables.objects.filter(week=today_time.weekday(),quater=4) #今日開講予定で登録されている時間割を取得
 
-    current_notify_queue = notifications.objects.all()
+    current_notify_queue = notifications.objects.filter(isProcessOnRails=False)
 
-    current_notify_queue.delete()
+    if current_notify_queue != None:
+        current_notify_queue.delete()
 
     for i in timetable_data:
         user_device = devices.objects.filter(target_id=i.target_id)

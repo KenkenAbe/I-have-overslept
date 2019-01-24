@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/table/views.py" line="419" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/table/views.py" line="421" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1f6832c-a859-45af-ad34-134bba1b4f7f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/table/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/table/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/table/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/table/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/table/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="421" column="50" lean-forward="true" selection-start-line="421" selection-start-column="50" selection-end-line="421" selection-end-column="50" />
+            <state relative-caret-position="465">
+              <caret line="153" column="32" lean-forward="true" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -114,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/table/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+            <state relative-caret-position="248">
+              <caret line="25" column="38" lean-forward="true" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -275,12 +276,12 @@
       <workItem from="1545637774362" duration="7341000" />
       <workItem from="1546577595899" duration="4229000" />
       <workItem from="1547188373960" duration="6300000" />
-      <workItem from="1548177045959" duration="361000" />
+      <workItem from="1548177045959" duration="4174000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71366000" />
+    <option name="totallyTimeSpent" value="75179000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -307,9 +308,9 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32970297" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.3" />
+      <window_info anchor="bottom" id="File Transfer" order="9" visible="true" weight="0.29946524" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.31229946" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.31229946" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32959184" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -483,15 +484,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/table/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+        <state relative-caret-position="248">
+          <caret line="25" column="38" lean-forward="true" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/table/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="421" column="50" lean-forward="true" selection-start-line="421" selection-start-column="50" selection-end-line="421" selection-end-column="50" />
+        <state relative-caret-position="465">
+          <caret line="153" column="32" lean-forward="true" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
