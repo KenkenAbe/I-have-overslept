@@ -25,5 +25,6 @@ urlpatterns = [
     path(r'timetables/create',views.createTimetable),
     path(r'api/v1/schedules/json',views.getTableData),
     path(r'api/v1/setting/notify',views.initialize_alert),
-    path(r'api/v1/notify/send',views.checkAlermStatus)
+    path(r'api/v1/notify/send',views.checkAlermStatus),
+    path(r'setting/apply',views.user_settings,name='user_setting_apply')
 ]

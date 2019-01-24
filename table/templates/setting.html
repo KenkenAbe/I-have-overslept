@@ -13,8 +13,12 @@
 <body>
     <div class="container">
     <h1>設定</h1>
-    <h2>起床時間の設定</h2>
-    <p>授業開始<input type="text" id="alert">分前</p><br>
+        <form action="{% url 'user_setting_apply' %}" method="post">
+            {% csrf_token %}
+            <h2>起床時間の設定</h2>
+            <p>授業開始<input type="text" id="alert" name="offset">分前</p><br>
+            <button type="submit">適用</button>
+        </form>
     <a href="{% url 'table' %}" >時間割へ</a>
     </div>
 </body>

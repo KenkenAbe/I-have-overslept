@@ -182,6 +182,27 @@ def authorization(request):
     if request.COOKIES.get('key') == None:
         return False
 
+def user_settings(request):
+    try:
+        if request.method != "POST":
+            raise AttributeError
+
+        encryption_key = "f012c2a1c35e7952"
+        encryptor = AESCipher(encryption_key)
+
+        token = encryptor.decrypt(request.COOKIES.get("key")).decode("utf-8").split(":")
+
+        current_user = users.objects.filter(target_id=token[0], token=token[1])
+        target_user = current_user.first()
+
+        target_user.offset_time = int(request.POST["offset"])*60
+
+        target_user.save()
+
+        return redirect("/")
+    except:
+         return HttpResponse("System Error! InternalError or Invalid User, Please contact to administrator")
+
 def createTimetable(request):
     """if request.GET["title"] == "" or request.GET["teacher"] == "" or request.GET["start_time"] == None or request.GET["end_time"] == None or request.GET["week"] == "" or request.GET["time"] == "":
         return None"""
@@ -413,6 +434,7 @@ def initialize_alert(request):
 
     for i in timetable_data:
         user_device = devices.objects.filter(target_id=i.target_id)
+        target_user = users.objects.filter(target_id=i.target_id)
         print(i.target_id)
         print(i.title)
         if user_device == None:
@@ -421,7 +443,7 @@ def initialize_alert(request):
             new_pending_alert = notifications()
             new_pending_alert.target = i.target_id
             new_pending_alert.targetTeacher = i.teacher
-            new_pending_alert.fireTime = i.start_time - 60*60*6
+            new_pending_alert.fireTime = i.start_time - target_user.first().offset_time
             new_pending_alert.status = 0
             new_pending_alert.isContact = False
             new_pending_alert.title = i.title
