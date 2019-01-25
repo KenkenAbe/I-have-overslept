@@ -1,11 +1,13 @@
-body {
+.bgimg {
     font-family: sans-serif;
     overflow: visible !important;
-    background: -webkit-linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
-    background: -moz-linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
-    background: -ms-linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
-    background: -o-linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
-    background: linear-gradient(45deg, #6ef5ff 10%, #414df8 90%);
+    background-image:url("https://iniad-stulab.s3.amazonaws.com/img/%E3%81%AF%E3%81%84%E3%81%91%E3%83%BC_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9B%E3%82%99%E3%83%BC%E3%83%88%E3%82%99+1.png");
+    width:100vw;
+    height:100vh;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
 }
 
 h1 {
@@ -37,6 +39,7 @@ tr.week {
 td {
     border-color: white;
     background-color: #eeeeee;
+    height: 10vh;
 }
 
 td.time {

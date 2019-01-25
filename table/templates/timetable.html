@@ -16,204 +16,208 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand" href="/">
-            INIAD時間割
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-label="Toggle navigation" aria-expanded="false">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'setting' %}">Settings</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                      <span class="navbar-text">
-                        Welcome back, {{ user_id }}!
-                        </span>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <br><br>
-        <div class="center-block">
-            <table class="table-responsive">
-                <tr class="week">
-                    <th>　</th>
-                    <th style="text-align: center;">
-                        　月　
-                    </th>
-                    <th style="text-align: center;">
-                        　火　
-                    </th>
-                    <th style="text-align: center;">
-                        　水　
-                    </th>
-                    <th style="text-align: center;">
-                        　木　
-                    </th>
-                    <th style="text-align: center;">
-                        　金　
-                    </th>
-                    <th style="text-align: center;">
-                        　土　
-                    </th>
-                </tr>
-                <tr>
-                    <td class="time" style="text-align: center"><strong>1限</strong><br> 9:00~10:30</td>
-                    <td id="g1"><button onclick="rewriteFormModal(0,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_1.title }}</button></td>
-                    <td id="k1"><button onclick="rewriteFormModal(1,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_1.title }}</button></td>
-                    <td id="s1"><button onclick="rewriteFormModal(2,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_1.title }}</button></td>
-                    <td id="m1"><button onclick="rewriteFormModal(3,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_1.title }}</button></td>
-                    <td id="i1"><button onclick="rewriteFormModal(4,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_1.title }}</button></td>
-                    <td id="d1"><button onclick="rewriteFormModal(5,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_1.title }}</button></td>
-                </tr>
-                <tr>
-                    <td class="time" style="text-align: center"><strong>2限</strong><br>10:40~12:10</td>
-                    <td id="g2"><button onclick="rewriteFormModal(0,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_2.title }}</button></td>
-                    <td id="k2"><button onclick="rewriteFormModal(1,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_2.title }}</button></td>
-                    <td id="s2"><button onclick="rewriteFormModal(2,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_2.title }}</button></td>
-                    <td id="m2"><button onclick="rewriteFormModal(3,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_2.title }}</button></td>
-                    <td id="i2"><button onclick="rewriteFormModal(4,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_2.title }}</button></td>
-                    <td id="d2"><button onclick="rewriteFormModal(5,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_2.title }}</button></td>
-                </tr>
-                <tr>
-                    <td class="time" style="text-align: center"><strong>3限</strong><br>13:00~14:30</td>
-                    <td id="g3"><button onclick="rewriteFormModal(0,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_3.title }}</button></td>
-                    <td id="k3"><button onclick="rewriteFormModal(1,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_3.title }}</button></td>
-                    <td id="s3"><button onclick="rewriteFormModal(2,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_3.title }}</button></td>
-                    <td id="m3"><button onclick="rewriteFormModal(3,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_3.title }}</button></td>
-                    <td id="i3"><button onclick="rewriteFormModal(4,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_3.title }}</button></td>
-                    <td id="d3"><button onclick="rewriteFormModal(5,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_3.title }}</button></td>
-                </tr>
-                <tr>
-                    <td class="time" style="text-align: center"><strong>4限</strong><br>14:45~16:15</td>
-                    <td id="g4"><button onclick="rewriteFormModal(0,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_4.title }}</button></td>
-                    <td id="k4"><button onclick="rewriteFormModal(1,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_4.title }}</button></td>
-                    <td id="s4"><button onclick="rewriteFormModal(2,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_4.title }}</button></td>
-                    <td id="m4"><button onclick="rewriteFormModal(3,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_4.title }}</button></td>
-                    <td id="i4"><button onclick="rewriteFormModal(4,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_4.title }}</button></td>
-                    <td id="d4"><button onclick="rewriteFormModal(5,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_4.title }}</button></td>
-                </tr>
-                <tr>
-                    <td class="time" style="text-align: center"><strong>5限</strong><br>16:30~18:00</td>
-                    <td id="g5"><button onclick="rewriteFormModal(0,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_5.title }}</button></td>
-                    <td id="k5"><button onclick="rewriteFormModal(1,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_5.title }}</button></td>
-                    <td id="s5"><button onclick="rewriteFormModal(2,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_5.title }}</button></td>
-                    <td id="m5"><button onclick="rewriteFormModal(3,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_5.title }}</button></td>
-                    <td id="i5"><button onclick="rewriteFormModal(4,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_5.title }}</button></td>
-                    <td id="d5"><button onclick="rewriteFormModal(5,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_5.title }}</button></td>
-                </tr>
-                <tr>
-                    <td class="time" style="text-align: center"><strong>6限</strong><br>18:15~19:45</td>
-                    <td id="g6"><button onclick="rewriteFormModal(0,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_6.title }}</button></td>
-                    <td id="k6"><button onclick="rewriteFormModal(1,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_6.title }}</button></td>
-                    <td id="s6"><button onclick="rewriteFormModal(2,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_6.title }}</button></td>
-                    <td id="m6"><button onclick="rewriteFormModal(3,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_6.title }}</button></td>
-                    <td id="i6"><button onclick="rewriteFormModal(4,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_6.title }}</button></td>
-                    <td id="d6"><button onclick="rewriteFormModal(5,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_6.title }}</button></td>
-                </tr>
-            </table></div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                  <form action="/timetables/create" method="post">
-                      {% csrf_token %}
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">科目名：</label>
-                        <input type="text" class="form-control" id="title" value="" autocomplete="off" name="title">
+    <div class="bgimg">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a class="navbar-brand" href="/">
+                INIAD時間割
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'setting' %}">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.toyo.ac.jp/site/iniad/317496.html">全体時間割</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                          <span class="navbar-text">
+                            Welcome back, {{ user_id }}!
+                            </span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <br><br>
+            <div class="center-block">
+                <table class="table-responsive">
+                    <tr class="week">
+                        <th>　</th>
+                        <th style="text-align: center;">
+                            　月　
+                        </th>
+                        <th style="text-align: center;">
+                            　火　
+                        </th>
+                        <th style="text-align: center;">
+                            　水　
+                        </th>
+                        <th style="text-align: center;">
+                            　木　
+                        </th>
+                        <th style="text-align: center;">
+                            　金　
+                        </th>
+                        <th style="text-align: center;">
+                            　土　
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="time" style="text-align: center"><strong>1限</strong><br> 9:00~10:30</td>
+                        <td id="g1"><button onclick="rewriteFormModal(0,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_1.title }}</button></td>
+                        <td id="k1"><button onclick="rewriteFormModal(1,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_1.title }}</button></td>
+                        <td id="s1"><button onclick="rewriteFormModal(2,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_1.title }}</button></td>
+                        <td id="m1"><button onclick="rewriteFormModal(3,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_1.title }}</button></td>
+                        <td id="i1"><button onclick="rewriteFormModal(4,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_1.title }}</button></td>
+                        <td id="d1"><button onclick="rewriteFormModal(5,1)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_1.title }}</button></td>
+                    </tr>
+                    <tr>
+                        <td class="time" style="text-align: center"><strong>2限</strong><br>10:40~12:10</td>
+                        <td id="g2"><button onclick="rewriteFormModal(0,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_2.title }}</button></td>
+                        <td id="k2"><button onclick="rewriteFormModal(1,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_2.title }}</button></td>
+                        <td id="s2"><button onclick="rewriteFormModal(2,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_2.title }}</button></td>
+                        <td id="m2"><button onclick="rewriteFormModal(3,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_2.title }}</button></td>
+                        <td id="i2"><button onclick="rewriteFormModal(4,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_2.title }}</button></td>
+                        <td id="d2"><button onclick="rewriteFormModal(5,2)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_2.title }}</button></td>
+                    </tr>
+                    <tr>
+                        <td class="time" style="text-align: center"><strong>3限</strong><br>13:00~14:30</td>
+                        <td id="g3"><button onclick="rewriteFormModal(0,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_3.title }}</button></td>
+                        <td id="k3"><button onclick="rewriteFormModal(1,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_3.title }}</button></td>
+                        <td id="s3"><button onclick="rewriteFormModal(2,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_3.title }}</button></td>
+                        <td id="m3"><button onclick="rewriteFormModal(3,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_3.title }}</button></td>
+                        <td id="i3"><button onclick="rewriteFormModal(4,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_3.title }}</button></td>
+                        <td id="d3"><button onclick="rewriteFormModal(5,3)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_3.title }}</button></td>
+                    </tr>
+                    <tr>
+                        <td class="time" style="text-align: center"><strong>4限</strong><br>14:45~16:15</td>
+                        <td id="g4"><button onclick="rewriteFormModal(0,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_4.title }}</button></td>
+                        <td id="k4"><button onclick="rewriteFormModal(1,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_4.title }}</button></td>
+                        <td id="s4"><button onclick="rewriteFormModal(2,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_4.title }}</button></td>
+                        <td id="m4"><button onclick="rewriteFormModal(3,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_4.title }}</button></td>
+                        <td id="i4"><button onclick="rewriteFormModal(4,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_4.title }}</button></td>
+                        <td id="d4"><button onclick="rewriteFormModal(5,4)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_4.title }}</button></td>
+                    </tr>
+                    <tr>
+                        <td class="time" style="text-align: center"><strong>5限</strong><br>16:30~18:00</td>
+                        <td id="g5"><button onclick="rewriteFormModal(0,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_5.title }}</button></td>
+                        <td id="k5"><button onclick="rewriteFormModal(1,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_5.title }}</button></td>
+                        <td id="s5"><button onclick="rewriteFormModal(2,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_5.title }}</button></td>
+                        <td id="m5"><button onclick="rewriteFormModal(3,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_5.title }}</button></td>
+                        <td id="i5"><button onclick="rewriteFormModal(4,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_5.title }}</button></td>
+                        <td id="d5"><button onclick="rewriteFormModal(5,5)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_5.title }}</button></td>
+                    </tr>
+                    <tr>
+                        <td class="time" style="text-align: center"><strong>6限</strong><br>18:15~19:45</td>
+                        <td id="g6"><button onclick="rewriteFormModal(0,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.0_6.title }}</button></td>
+                        <td id="k6"><button onclick="rewriteFormModal(1,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.1_6.title }}</button></td>
+                        <td id="s6"><button onclick="rewriteFormModal(2,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.2_6.title }}</button></td>
+                        <td id="m6"><button onclick="rewriteFormModal(3,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.3_6.title }}</button></td>
+                        <td id="i6"><button onclick="rewriteFormModal(4,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.4_6.title }}</button></td>
+                        <td id="d6"><button onclick="rewriteFormModal(5,6)" style="width: 100%; height: 100%; margin: auto" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">{{ lessons.5_6.title }}</button></td>
+                    </tr>
+                </table></div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                       </div>
-                      <div class="form-group">
-                        <lavel for="recipient-name" class="col-form-lavel">教員　：</lavel>
-                        <select class="form-control" id="exampleFormControlSelect1" name="teacher">
-                          {% for i in teachers %}
-                              <option>{{ i }}</option>
-                          {%  endfor %}
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <lavel for="recipient-name" class="col-form-lavel">教室　：</lavel>
-                        <select class="form-control" id="exampleFormControlSelect1" name="room">
-                          <option>ホール</option>
-                          <option>講義室</option>
-                          <option>３１０１</option>
-                          <option>３１０２</option>
-                          <option>３１０５</option>
-                          <option>３１０６</option>
-                          <option>３１１９</option>
-                          <option>３１１０</option>
-                          <option>３１１４</option>
-                          <option>３２０１</option>
-                          <option>３２０５</option>
-                          <option>３２０９</option>
-                          <option>３２１３</option>
-                          <option>４１０１</option>
-                          <option>４１０２</option>
-                          <option>４１０５</option>
-                          <option>４１０６</option>
-                          <option>４１１９</option>
-                          <option>４１１０</option>
-                          <option>４１１４</option>
-                          <option>４２０１</option>
-                          <option>４２０５</option>
-                          <option>４２０９</option>
-                          <option>４２１３</option>
-                          <option>５１０１</option>
-                          <option>５１０２</option>
-                          <option>５１０５</option>
-                          <option>５１０６</option>
-                          <option>５１１９</option>
-                          <option>５１１０</option>
-                          <option>５１１４</option>
-                          <option>５２０１</option>
-                          <option>５２０５</option>
-                          <option>５２０９</option>
-                          <option>５２１３</option>５
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <lavel for="recipient-name" class="col-form-lavel">クォーター：</lavel>
-                        <select class="form-control" id="exampleFormControlSelect1" name="quater">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">曜日　：</label>
-                        <input type="text" class="form-control" id="form-week" name="week" readonly >
-                      </div>
+                      <div class="modal-body">
+                      <form action="/timetables/create" method="post">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">科目名：</label>
+                            <input type="text" class="form-control" id="title" value="" autocomplete="off" name="title">
+                          </div>
+                          <div class="form-group">
+                            <lavel for="recipient-name" class="col-form-lavel">教員　：</lavel>
+                            <select class="form-control" id="exampleFormControlSelect1" name="teacher">
+                              {% for i in teachers %}
+                                  <option>{{ i }}</option>
+                              {%  endfor %}
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <lavel for="recipient-name" class="col-form-lavel">教室　：</lavel>
+                            <select class="form-control" id="exampleFormControlSelect1" name="room">
+                              <option>ホール</option>
+                              <option>講義室</option>
+                              <option>３１０１</option>
+                              <option>３１０２</option>
+                              <option>３１０５</option>
+                              <option>３１０６</option>
+                              <option>３１１９</option>
+                              <option>３１１０</option>
+                              <option>３１１４</option>
+                              <option>３２０１</option>
+                              <option>３２０５</option>
+                              <option>３２０９</option>
+                              <option>３２１３</option>
+                              <option>４１０１</option>
+                              <option>４１０２</option>
+                              <option>４１０５</option>
+                              <option>４１０６</option>
+                              <option>４１１９</option>
+                              <option>４１１０</option>
+                              <option>４１１４</option>
+                              <option>４２０１</option>
+                              <option>４２０５</option>
+                              <option>４２０９</option>
+                              <option>４２１３</option>
+                              <option>５１０１</option>
+                              <option>５１０２</option>
+                              <option>５１０５</option>
+                              <option>５１０６</option>
+                              <option>５１１９</option>
+                              <option>５１１０</option>
+                              <option>５１１４</option>
+                              <option>５２０１</option>
+                              <option>５２０５</option>
+                              <option>５２０９</option>
+                              <option>５２１３</option>５
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <lavel for="recipient-name" class="col-form-lavel">クォーター：</lavel>
+                            <select class="form-control" id="exampleFormControlSelect1" name="quater">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">曜日　：</label>
+                            <input type="text" class="form-control" id="form-week" name="week" readonly >
+                          </div>
 
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">時間　：</label>
-                        <input type="text" class="form-control" id="form-time" name="time" readonly>
-                      </div>
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">時間　：</label>
+                            <input type="text" class="form-control" id="form-time" name="time" readonly>
+                          </div>
 
-                      <input class="btn btn-primary" type="submit" value="作成">
-                      <input class="btn btn-secondary" data-dismiss="modal" type="cancel" value="キャンセル">
-                    </form>
+                          <input class="btn btn-primary" type="submit" value="作成">
+                          <input class="btn btn-secondary" data-dismiss="modal" type="cancel" value="キャンセル">
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-        <br>
-            INIAD時間割: <a href="http://www.toyo.ac.jp/site/iniad/317496.html">http://www.toyo.ac.jp/site/iniad/317496.html</a>
+            <br>
+        </div>
     </div>
 </body>
 
